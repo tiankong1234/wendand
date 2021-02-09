@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".AddDataActivity">
+
+
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <EditText
+            android:hint="标题"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/titletext"/>
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:id="@+id/addcard"
+            app:cardCornerRadius="8dp" app:cardBackgroundColor="#3F51B5">
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                android:background="#FFFFFF"
+                android:inputType="textMultiLine"
+                android:minLines="7"
+                android:scrollbars="vertical"
+                android:gravity="top"
+                android:hint="内容"
+                android:id="@+id/contenttext"
+                android:imeOptions="actionDone"/>
+    </androidx.cardview.widget.CardView>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
+
+
+        <TextView android:layout_width="0dp"
+                  android:text="日志类型"
+                  android:layout_margin="10dp"
+                  android:layout_weight="4"
+                  android:layout_height="wrap_content"/>
+        <Spinner
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:id="@+id/spinnertype"
+                android:layout_weight="3"/>
+
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+
+        <TextView android:layout_width="wrap_content"
+                  android:text="定时提醒"
+                  android:layout_margin="10dp"
+                  android:layout_weight="4"
+                  android:layout_height="wrap_content"/>
+    <androidx.appcompat.widget.SwitchCompat
+            android:layout_width="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:id="@+id/switchcompat"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:visibility="gone"
+                  android:id="@+id/timelayout"
+                  android:layout_height="wrap_content">
+
+        <TextView android:layout_width="wrap_content"
+                  android:text="开始时间"
+                  android:layout_margin="10dp"
+                  android:layout_weight="2"
+                  android:layout_height="wrap_content"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:text="2019年12月12日12点12分"
+                android:layout_marginStart="40dp"
+                android:gravity="center"
+                android:id="@+id/timedate"
+                android:layout_marginTop="10dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>
+</ScrollView>
