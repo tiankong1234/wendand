@@ -16,6 +16,7 @@ import android.os.Bundle;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.NotificationCompat;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -159,12 +160,17 @@ public class EditDataActivity extends AppCompatActivity {
                     Date nowdate=new Date();
                     if(checked && startdate> nowdate.getTime()) {
                         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-                        Intent noticeintent = new Intent(EditDataActivity.this, NoticeActivity.class);
-                        intent.putExtra("data", data);
-                        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, noticeintent, 0);
-                        alarmManager.cancel(pendingIntent);
-                        alarmManager.setExact(AlarmManager.RTC_WAKEUP, data.getStartdate(), pendingIntent);
+                        Intent noticeintent = new Intent(EditDataActivity.this, MyService.class);
+                        Bundle bundle=new Bundle();
+                        bundle.putSerializable("data",data);
+                        noticeintent.putExtra("data", bundle);
+                        startService(noticeintent);
+                        //PendingIntent pendingIntent = PendingIntent.getService(this, 0, noticeintent,PendingIntent.FLAG_UPDATE_CURRENT);
+                        //alarmManager.setExact(AlarmManager.RTC_WAKEUP, data.getStartdate(), pendingIntent);
+                        //alarmManager.setAlarmClock(new AlarmManager.AlarmClockInfo(data.getStartdate(),pendingIntent),pendingIntent);
+
                     }
+
                 setResult(Activity.RESULT_OK,intent);
                 }
                 finish();
@@ -204,4 +210,5 @@ public class EditDataActivity extends AppCompatActivity {
             }
         }
     }
+
 }

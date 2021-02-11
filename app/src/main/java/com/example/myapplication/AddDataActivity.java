@@ -16,6 +16,7 @@ import android.os.Bundle;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.NotificationCompat;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -35,8 +36,8 @@ public class AddDataActivity extends AppCompatActivity {
     private String timestr="";
     private String datestr="";
     private String datatimestr="";
-    private Long startdate;
-    private boolean checked;
+    private Long startdate=0L;
+    private boolean checked=false;
     private int typeposition;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,9 @@ public class AddDataActivity extends AppCompatActivity {
         timelayout=findViewById(R.id.timelayout);
         timedate=findViewById(R.id.timedate);
         spinner=findViewById(R.id.spinnertype);
+        typename=Constants.typenames[0];
+        typeposition=0;
+        datatimestr=timedate.getText().toString();
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,Constants.typenames);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -144,12 +148,17 @@ public class AddDataActivity extends AppCompatActivity {
                     data.setTypeposition(typeposition);
                     data.setStartdatestr(datatimestr);
                     Date nowdate=new Date();
+                    intent.putExtra("data",data);
                     if(checked && startdate> nowdate.getTime()) {
                         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-                        Intent noticeintent = new Intent(AddDataActivity.this, NoticeActivity.class);
-                        intent.putExtra("data", data);
-                        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, noticeintent, 0);
-                        alarmManager.setExact(AlarmManager.RTC_WAKEUP, data.getStartdate(), pendingIntent);
+                        Intent noticeintent = new Intent(AddDataActivity.this, MyService.class);
+                        Bundle bundle=new Bundle();
+                        bundle.putSerializable("data",data);
+                        noticeintent.putExtra("data", bundle);
+                        startService(noticeintent);
+                        //PendingIntent pendingIntent = PendingIntent.getService(this, 0, noticeintent, PendingIntent.FLAG_UPDATE_CURRENT);
+                        //alarmManager.setExact(AlarmManager.RTC_WAKEUP, data.getStartdate(), pendingIntent);
+
                     }
                     setResult(Activity.RESULT_OK,intent);
                 }
@@ -185,4 +194,5 @@ public class AddDataActivity extends AppCompatActivity {
             }
         }
     }
+
 }

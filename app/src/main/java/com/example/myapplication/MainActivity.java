@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent,Constants.ADD_DATA_REQUEST);
             }
         });
+        startService(new Intent(this,MyService.class));
 
 
     }
@@ -92,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.activity_main, menu);
+
         return true;
     }
     @Override
@@ -100,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.add:
                 Intent intent=new Intent(MainActivity.this,AddDataActivity.class);
                 startActivityForResult(intent,Constants.ADD_DATA_REQUEST);
-                Toast.makeText(this,"search",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.about:
                 Toast.makeText(this,"help",Toast.LENGTH_SHORT).show();
@@ -187,4 +188,5 @@ public class MainActivity extends AppCompatActivity {
         datas.add(data);
 
     }
+
 }

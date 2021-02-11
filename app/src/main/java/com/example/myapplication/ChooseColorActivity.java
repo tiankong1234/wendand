@@ -11,8 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class ChooseColorActivity extends AppCompatActivity {
     private  int[] intcolors=Constants.intcolors;
@@ -36,6 +34,7 @@ public class ChooseColorActivity extends AppCompatActivity {
                 finish();
             }
         });
+
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){

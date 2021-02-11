@@ -24,6 +24,7 @@
             android:hint="标题"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#000000"
             android:layout_margin="10dp"
             android:id="@+id/titletext"/>
     <androidx.cardview.widget.CardView
@@ -36,6 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
+                android:textColor="#000000"
                 android:layout_margin="5dp"
                 android:background="#FFFFFF"
                 android:inputType="textMultiLine"
@@ -52,11 +54,13 @@
 
         <TextView android:layout_width="0dp"
                   android:text="日志类型"
+                  android:textColor="#000000"
                   android:layout_margin="10dp"
                   android:layout_weight="4"
                   android:layout_height="wrap_content"/>
         <Spinner
                 android:layout_width="0dp"
+                android:textColor="#000000"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:id="@+id/spinnertype"
@@ -67,6 +71,7 @@
 
         <TextView android:layout_width="wrap_content"
                   android:text="定时提醒"
+                  android:textColor="#000000"
                   android:layout_margin="10dp"
                   android:layout_weight="4"
                   android:layout_height="wrap_content"/>
@@ -86,6 +91,7 @@
 
         <TextView android:layout_width="wrap_content"
                   android:text="开始时间"
+                  android:textColor="#000000"
                   android:layout_margin="10dp"
                   android:layout_weight="2"
                   android:layout_height="wrap_content"/>
@@ -93,6 +99,7 @@
                 android:layout_width="wrap_content"
                 android:text="2019年12月12日12点12分"
                 android:layout_marginStart="40dp"
+                android:textColor="#000000"
                 android:gravity="center"
                 android:id="@+id/timedate"
                 android:layout_marginTop="10dp"
