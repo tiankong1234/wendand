@@ -36,7 +36,7 @@ public class NoticeActivity extends AppCompatActivity {
         content.setText(data.getContent());
         typename.setText(data.getTypename());
         timedate.setText(data.getStartdatestr());
-        startService(new Intent(this,MyService.class));
+
     }
 
 }

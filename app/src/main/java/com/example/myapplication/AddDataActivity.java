@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -39,12 +40,14 @@ public class AddDataActivity extends AppCompatActivity {
     private Long startdate=0L;
     private boolean checked=false;
     private int typeposition;
+    private Long globalid=0L;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_data);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
+        globalid=getIntent().getLongExtra("lastglobalid",0L);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         title=findViewById(R.id.titletext);
         content=findViewById(R.id.contenttext);
@@ -148,7 +151,6 @@ public class AddDataActivity extends AppCompatActivity {
                     data.setTypeposition(typeposition);
                     data.setStartdatestr(datatimestr);
                     Date nowdate=new Date();
-                    intent.putExtra("data",data);
                     if(checked && startdate> nowdate.getTime()) {
                         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                         Intent noticeintent = new Intent(AddDataActivity.this, MyService.class);
@@ -160,6 +162,10 @@ public class AddDataActivity extends AppCompatActivity {
                         //alarmManager.setExact(AlarmManager.RTC_WAKEUP, data.getStartdate(), pendingIntent);
 
                     }
+                    globalid++;
+                    data.setGlobalid(globalid);
+                    Log.d("asd", String.valueOf(globalid));
+                    intent.putExtra("data",data);
                     setResult(Activity.RESULT_OK,intent);
                 }
                 finish();

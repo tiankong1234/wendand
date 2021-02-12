@@ -154,23 +154,24 @@ public class EditDataActivity extends AppCompatActivity {
                 data.setTypeposition(typeposition);
                 data.setChecked(checked);
                 data.setStartdate(startdate);
-                intent.putExtra("action",true);
-                intent.putExtra("position",position);
-                intent.putExtra("data",data);
+
                     Date nowdate=new Date();
                     if(checked && startdate> nowdate.getTime()) {
-                        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                        //AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                         Intent noticeintent = new Intent(EditDataActivity.this, MyService.class);
                         Bundle bundle=new Bundle();
                         bundle.putSerializable("data",data);
                         noticeintent.putExtra("data", bundle);
+                        noticeintent.putExtra("position",position);
                         startService(noticeintent);
                         //PendingIntent pendingIntent = PendingIntent.getService(this, 0, noticeintent,PendingIntent.FLAG_UPDATE_CURRENT);
                         //alarmManager.setExact(AlarmManager.RTC_WAKEUP, data.getStartdate(), pendingIntent);
                         //alarmManager.setAlarmClock(new AlarmManager.AlarmClockInfo(data.getStartdate(),pendingIntent),pendingIntent);
 
                     }
-
+                    intent.putExtra("action",true);
+                    intent.putExtra("position",position);
+                    intent.putExtra("data",data);
                 setResult(Activity.RESULT_OK,intent);
                 }
                 finish();

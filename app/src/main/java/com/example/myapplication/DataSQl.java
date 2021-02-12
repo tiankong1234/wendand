@@ -18,7 +18,8 @@ public class DataSQl extends SQLiteOpenHelper {
             + "typeposition integer,"
             + "checked integer,"
             + "startdate integer,"
-            + "startdatestr text)";
+            + "startdatestr text,"
+            + "globalid integer)";
     public DataSQl( Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }

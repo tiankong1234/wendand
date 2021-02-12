@@ -16,6 +16,7 @@ public class Data implements Serializable {
     private boolean checked;
     private int typeposition;
     private String startdatestr;
+    private Long globalid;
 
     public Data(String title, String content, String date, int titlecolor, int bordercolor, int contentcolor){
         this.title=title;
@@ -33,6 +34,15 @@ public class Data implements Serializable {
         this.titlecolor = titlecolor;
         this.bordercolor = bordercolor;
         this.contentcolor = contentcolor;
+    }
+
+
+    public Long getGlobalid() {
+        return globalid;
+    }
+
+    public void setGlobalid(Long globalid) {
+        this.globalid = globalid;
     }
 
     public String getStartdatestr() {
@@ -129,4 +139,6 @@ public class Data implements Serializable {
     public void setBordercolor(int bordercolor) {
         this.bordercolor = bordercolor;
     }
+
+
 }
